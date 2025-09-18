@@ -1,0 +1,29 @@
+=== Test: Tokenizers on small examples ===
+
+-- SimpleTokenizer --
+Hello, world! This is a test. -> ['hello', 'world', 'this', 'is', 'a', 'test']
+NLP is fascinating... isn't it? -> ['nlp', 'is', 'fascinating', "isn't", 'it']
+Let's see how it handles 123 numbers and punctuation! -> ["let's", 'see', 'how', 'it', 'handles', '123', 'numbers', 'and', 'punctuation']
+
+-- RegexTokenizer --
+Hello, world! This is a test. -> ['hello', ',', 'world', '!', 'this', 'is', 'a', 'test', '.']
+NLP is fascinating... isn't it? -> ['nlp', 'is', 'fascinating', '...', "isn't", 'it', '?']
+Let's see how it handles 123 numbers and punctuation! -> ["let's", 'see', 'how', 'it', 'handles', '123', 'numbers', 'and', 'punctuation', '!']
+
+=== Test: CountVectorizer on small corpus ===
+Vocabulary: {'.': 0, 'a': 1, 'ai': 2, 'i': 3, 'is': 4, 'love': 5, 'nlp': 6, 'of': 7, 'programming': 8, 'subfield': 9}
+Doc-term matrix:
+[1, 0, 0, 1, 0, 1, 1, 0, 0, 0]
+[1, 0, 0, 1, 0, 1, 0, 0, 1, 0]
+[1, 1, 1, 0, 1, 0, 1, 1, 0, 1]
+
+=== Test: Tokenizers on UD sample ===
+Original sample (first 120 chars): Al - Zaman : American forces killed Shaikh Abdullah al - Ani , the preacher at the mosque in the town of Qaim , near the
+SimpleTokenizer tokens (first 30): ['al', 'zaman', 'american', 'forces', 'killed', 'shaikh', 'abdullah', 'al', 'ani', 'the', 'preacher', 'at', 'the', 'mosque', 'in', 'the', 'town', 'of', 'qaim', 'near', 'the', 'syrian', 'border', 'this', 'killing', 'of', 'a', 'respected', 'cleric', 'will']
+RegexTokenizer tokens (first 30): ['al', '-', 'zaman', ':', 'american', 'forces', 'killed', 'shaikh', 'abdullah', 'al', '-', 'ani', ',', 'the', 'preacher', 'at', 'the', 'mosque', 'in', 'the', 'town', 'of', 'qaim', ',', 'near', 'the', 'syrian', 'border', '.', '[']
+
+=== Test: CountVectorizer on UD (first 200 sentences) ===
+Vocabulary size: 1498
+Sample vocab (first 30): ['!', '"', '#', '%', '&', "'", '(', ')', ',', '-', '.', '...', '/', '000', '01', '05', '07', '1', '10', '11', '12', '15', '196', '1960', '1982', '1986', '1991', '1993', '1996', '1999']
+Doc-term matrix shape: 200 x 1498
+First row (first 50 cols): [0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
